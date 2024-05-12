@@ -14,6 +14,9 @@ const TotalBill = ({ detectedItems }) => {
     const [referenceNumber, setReferenceNumber] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [foodItemPrices, setFoodItemPrices] = useState({});
+    const [phoneNumberError, setPhoneNumberError] = useState('');
+
+
 
     useEffect(() => {
         const fetchFoodItemPrices = async () => {
@@ -56,7 +59,26 @@ const TotalBill = ({ detectedItems }) => {
         return prefix + formattedDate + numericString;
     };
 
+
+
+
+
+
+
+
+
+
+
+
     const handleConfirmClick = async () => {
+       
+       
+       // Validate phone number
+    if (!validatePhoneNumber()) {
+        return; // Exit function if phone number is invalid
+    }
+       
+       
         try {
             const referenceNum = generateReferenceNumber();
             setReferenceNumber(referenceNum);
@@ -92,20 +114,54 @@ const TotalBill = ({ detectedItems }) => {
         }
     };
 
+
+
+    const validatePhoneNumber = () => {
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneNumber.trim()) {
+            setPhoneNumberError('Please enter your phone number.');
+            return false;
+        }
+        if (!phoneRegex.test(phoneNumber)) {
+            setPhoneNumberError('Please enter a valid 10-digit phone number.');
+            return false;
+        }
+        setPhoneNumberError('');
+        return true;
+    };
+
+
+
+
+
+
+
+
+
+
     return (
         <div>
             {!orderConfirmed ? (
                 <div className="total-bill-container">
                     
-                    <h2 className="total-bill-title">Food Items</h2>
+                    <h2 className="total-bill-title" style={{ color: 'black' }}>Food Items</h2>
                     <ul className="total-bill-list">
                         {detectedItems.map((item, index) => (
-                            <li key={index}>
-                                {item.name} - Price: ${foodItemPrices[item.name]} - Quantity: {item.quantity} - Total: ${(foodItemPrices[item.name] || 0) * item.quantity}
-                            </li>
+                            // <li key={index}>
+                            //     {item.name} ------ Price ${foodItemPrices[item.name]} ----- Quantity {item.quantity} ----- Total Price: ${(foodItemPrices[item.name] || 0) * item.quantity}
+                            // </li>
+                            <li key={index} style={{ color: 'black' }}>
+                           <span style={{ color: 'rgb(33, 33, 33)' }}> {item.name}</span> - <span style={{ color: 'rgb(99, 99, 99)' }}>
+                           <span style={{ color: 'rgb(33, 33, 33)' }}>Price ${foodItemPrices[item.name]} </span> </span> - <span style={{ color: 'rgb(55, 55, 55)' }}> 
+                            Quantity {item.quantity}</span> - <span style={{ color: 'rgb(0, 0, 0)' }}> 
+                            Total Price ${(foodItemPrices[item.name] || 0) * item.quantity}</span>
+                        </li>
+
+
+
                         ))}
                     </ul>
-                    <h2 className="total-bill-title">Total Bill: ${totalBill}</h2>
+                    <h2 className="total-bill" style={{ color: 'black' }}>Total Bill: ${totalBill}</h2>
                     <input
                         type="tel" // Set type to "tel" for phone number input
                         value={phoneNumber}
@@ -115,6 +171,9 @@ const TotalBill = ({ detectedItems }) => {
                         required
                         className="input-phone"
                     />
+
+                    {phoneNumberError && <p className="error ">{phoneNumberError}</p>}
+
                     <button className="confirm-button" onClick={handleConfirmClick}>Confirm Your Order</button>
                 </div>
             ) : (

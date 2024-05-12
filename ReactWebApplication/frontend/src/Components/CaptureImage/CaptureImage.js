@@ -17,12 +17,37 @@ const CaptureImage = () => {
   const [noItemsDetected, setNoItemsDetected] = useState(false);
   const [pendingPayment, setPendingPayment] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
 
 
 
 
-
+  useEffect(() => {
+    const checkPendingPayments = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/orders/pending');
+        const pendingOrders = response.data.pendingOrders;
+        setPendingPayment(pendingOrders.length > 0);
+        setLoading(false); // Set loading to false after checking pending payments
+      } catch (error) {
+        console.error('Error checking pending payments:', error);
+        setLoading(false); // Set loading to false in case of error
+        setErrorMessage('Error checking pending payments. Please try again later.'); // Set error message
+      }
+    };
+  
+    checkPendingPayments(); // Check pending payments when component mounts
+  
+    // Set interval to check for pending payments periodically
+    const interval = setInterval(() => {
+      checkPendingPayments();
+    }, 30000); // Check every 30 seconds
+  
+    return () => {
+      clearInterval(interval); // Clear interval when component unmounts
+    };
+  }, []);
 
   useEffect(() => {
     const eventSource = new EventSource('http://localhost:5000/video_feed');
@@ -34,16 +59,16 @@ const CaptureImage = () => {
     };
 
     // Check for pending payments when component mounts
-    checkPendingPayments();
+    //checkPendingPayments();
 
     // Set interval to check for pending payments periodically
-    const interval = setInterval(() => {
-      checkPendingPayments();
-    }, 30000); // Check every 10 seconds
+    //const interval = setInterval(() => {
+      //checkPendingPayments();
+    //}, 30000); // Check every 10 seconds
 
     return () => {
       eventSource.close();
-      clearInterval(interval); // Clear interval when component unmounts
+     // clearInterval(interval); // Clear interval when component unmounts
     };
   }, []);
 
@@ -56,6 +81,15 @@ const CaptureImage = () => {
       playPendingSound();
     }
   }, [pendingPayment, hasInteracted]);
+
+
+
+
+
+  // useEffect(() => {
+  //   // Check for pending payments when the component mounts
+  //   checkPendingPayments();
+  // }, []); // Empty dependency array ensures the effect runs only once on component mount
 
 
 
@@ -87,35 +121,12 @@ const CaptureImage = () => {
     }
   };
 
-
-
-
-
-  const checkPendingPayments = async () => {
-    try {
-      const response = await axios.get('http://localhost:4000/api/orders/pending');
-      const pendingOrders = response.data.pendingOrders;
-      // Update state to indicate pending payment
-      setPendingPayment(pendingOrders.length > 0);
-    } catch (error) {
-      console.error('Error checking pending payments:', error);
-    }
-  };
-
-
-
   const playPendingSound = () => {
     const pendingAudio = new Audio(pendingSound);
     pendingAudio.loop = true; // Set loop property to true
     pendingAudio.play();
   };
 
-
-
-  // const playPendingSound = () => {
-  //   const pendingAudio = new Audio(pendingSound);
-  //   pendingAudio.play();
-  // };
 
   const handleInteraction = () => {
     // Set hasInteracted to true when user interacts with the component
@@ -134,28 +145,73 @@ const CaptureImage = () => {
 
 
 
+  // const checkPendingPayments = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:4000/api/orders/pending');
+  //     const pendingOrders = response.data.pendingOrders;
+  //     // Update state to indicate pending payment
+  //     setPendingPayment(pendingOrders.length > 0);
+  //   } catch (error) {
+  //     console.error('Error checking pending payments:', error);
+  //   }
+  // };
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
   return (
     <div className="capture-image-container" onClick={handleInteraction}>
+      
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {errorMessage && (
+            <div className="error-message">
+              <FontAwesomeIcon icon={faExclamationCircle} className="error-icon" />
+              {errorMessage}
+            </div>
+          )}
+      
+      
+      
       {showObjectDetection ? (
         <TotalBill detectedItems={capturedItems}/>
       ) : (
         <div className={`capture-form ${noItemsDetected ? 'no-items-detected' : ''}`}>
           <div className="header">
-            <h1 className="welcome-message">Welcome!</h1>
+          <h1 className="welcome-message" style={{ color: 'black' }}>Welcome!</h1>
           </div>
           
           <div>
-          <h3 className="instruction">Put Your Tray Here</h3>
-           {/* Display message if no items are detected */}
-           {noItemsDetected && (
+          <h3 className="instruction" style={{ color: 'black' }}>Put Your Tray Here</h3>
+          
+           {/* {noItemsDetected && (
             <div className="no-items-detected-message">
               <FontAwesomeIcon icon={faExclamationCircle} className="error-icon" />
               No items detected. Please ensure there are items in the tray.
             </div>
-          )}
+            )}  */}
           
            {/* Display pending payment notification */}
            {pendingPayment && hasInteracted && (
@@ -177,7 +233,7 @@ const CaptureImage = () => {
             <img src="http://localhost:5000/video" alt="Camera Feed" />
           </div>
           {/* Display detected items */}
-          <h2>Detected Food Items</h2>
+          <h2 style={{ color: 'black' }}>Detected Food Items</h2>
           <ul className='detected-items-list'>
             {detectedItems.map((item, index) => (
               <li key={index}>
@@ -188,7 +244,7 @@ const CaptureImage = () => {
           {loading ? (
             <p className="loading-text">Capturing image...</p>
           ) : (
-            <button className="capture-button" onClick={capture}>
+            <button className="capture-button" onClick={capture} >
               Capture Image
             </button>
           )}
@@ -202,7 +258,12 @@ const CaptureImage = () => {
           </Link>
         </div>
       )}
+       </>
+      )}
     </div>
+
+
+
   );
 };
 

@@ -7,16 +7,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 /* Style for the logo container */
 .logo-container {
     display: flex;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom:10px ;
 }
 
 /* Style for the logo image */
 .logo {
+
     width: 40px;
     height: 40px;
     margin-right: 10px;
@@ -24,6 +28,7 @@
 
 /* Style for the logo text */
 .logo-text {
+    margin-left: 10px;
     color: #fff;
     font-size: 24px;
     font-weight: bold;
@@ -33,6 +38,13 @@
 .nav-links {
     display: flex;
     padding-right: 10px;
+    margin-left: auto;
+    /* Center content horizontally */
+    justify-content: center;
+    margin-right: 10px;
+    font-weight: bold;
+    /* Center content vertically */
+    justify-content: center;
 }
 
 /* Style for each navigation link */
@@ -41,11 +53,12 @@
     text-decoration: none;
     font-size: 18px;
     margin-left: 20px;
+    font-size: 20px;
 }
 
 /* Hover style for navigation links */
 .nav-link:hover {
-    text-decoration: underline;
+    color: rgb(255, 255, 25);
 }
 
 /* Style for the main content */
@@ -59,6 +72,18 @@
 
 /* Style for the camera button */
 .camera-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+.camera-button:hover  {
     padding: 15px 30px;
     font-size: 20px;
     background-color: #007bff;

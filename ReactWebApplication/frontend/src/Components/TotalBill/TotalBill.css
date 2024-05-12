@@ -1,12 +1,47 @@
 .total-bill-container {
   text-align: center;
   margin-top: 50px;
+  
 }
+
+
+
+
+.total-bill-title{
+  font-weight:bold;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+
+  
+}
+
+
+.total-bill {
+  margin-top: 5px;
+  font-weight:bold;
+  font-size: 50px;
+  
+
+}
+
+
 
 
 .total-bill-list li {
-   font-size: large;
+   font-size: 25px;
+  list-style-type: none;
+ 
+
 }
+
+
+.total-bill-list{
+  font-weight:bold;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  
+}
+
 
 .payment-confirmation {
   text-align: center;
@@ -17,17 +52,9 @@
   color: #27ae60;
 }
 
-.confirmation-title {
-  font-size: 24px;
-  color: #333;
-  margin-top: 20px;
-}
 
-.confirmation-text {
-  font-size: 18px;
-  color: #666;
-  margin-top: 10px;
-}
+
+
 
 .total-bill-container {
   display: flex;
@@ -50,7 +77,7 @@
 }
 
 .confirm-button:hover {
-  background-color: rgb(10, 0, 202); /* Darken button color on hover */
+  background-color: rgb(1, 65, 155); /* Darken button color on hover */
 }
 
 .input-phone {
@@ -58,4 +85,11 @@
   padding: 10px; /* Increase padding for the phone number input */
   align-items: center;
   text-align: center;
+  font-weight: bold; /* Make all text bold */
+}
+
+.error{
+  margin-top: 30px;
+  color: rgb(255, 0, 0);
+  font-size: 25px;
 }
