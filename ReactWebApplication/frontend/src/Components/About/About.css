@@ -1,0 +1,64 @@
+/* About.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .about-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin as needed */
+  }
+  
+  .about-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .about-container ul li {
+    margin-bottom: 10px; /* Adjust margin as needed */
+  }
+  
+  .about-container p {
+    margin-bottom: 10px; /* Adjust margin as needed */
+  }
+  
+  .about-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .about-container ul li {
+    margin: 5px 0;
+  }
+  
+  .about-container ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .about-container ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .about-container ul li svg {
+    margin-right: 5px;
+  }
+  
+  .about-container ul li a:hover {
+    color: #ffd700;
+  }

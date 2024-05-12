@@ -1,0 +1,61 @@
+.total-bill-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+.total-bill-list li {
+   font-size: large;
+}
+
+.payment-confirmation {
+  text-align: center;
+}
+
+.confirmation-icon {
+  font-size: 48px;
+  color: #27ae60;
+}
+
+.confirmation-title {
+  font-size: 24px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.confirmation-text {
+  font-size: 18px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.total-bill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold; /* Make all text bold */
+}
+
+.confirm-button {
+  
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: rgb(0, 133, 249); /* Change button color to green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.confirm-button:hover {
+  background-color: rgb(10, 0, 202); /* Darken button color on hover */
+}
+
+.input-phone {
+  font-size: 22px; /* Increase font size for the phone number input */
+  padding: 10px; /* Increase padding for the phone number input */
+  align-items: center;
+  text-align: center;
+}
