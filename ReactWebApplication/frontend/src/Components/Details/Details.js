@@ -92,20 +92,23 @@ function Details() {
         />
       </div>
       <h2>Total Sale Price for {selectedDate}: ${totalSalePrice}</h2>
-      {successMessage && (
-        <div className="success-message">
-          <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
-          <p>{successMessage}</p>
-        </div>
-      )}
+     
     
       <h1>Orders</h1>
-      <div className="container orders-container">
+      {successMessage && (
+        <div className="">
+          <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+          {successMessage}
+        </div>
+      )}
 
+      <div className="container orders-container">
+   
         {orders.length === 0 && <p>No orders available for {selectedDate}.</p>}
         {orders.map((order, index) => (
+
           <div key={index} className="order-item">
-            <h2>Order {index + 1}</h2>
+         <h2>Order {index + 1}</h2>
             <p>Total Bill: ${order.totalBill}</p>
             <p>Reference Number: {order.referenceNumber}</p>
             <p>Order Date and Time: {new Date(order.orderDateTime).toLocaleString()}</p>
@@ -122,6 +125,7 @@ function Details() {
                 <FontAwesomeIcon icon={faCheckCircle} className="paid-icon" /> :
                 <FontAwesomeIcon icon={faTimesCircle} className="pending-icon" />}
               {order.paid ? 'Paid' : 'Pending'}
+             
             </p>
             <button className="delete-button" onClick={() => deleteOrder(index)}><FontAwesomeIcon icon={faTrash} /></button>
             <hr />

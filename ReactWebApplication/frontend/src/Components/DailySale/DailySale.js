@@ -226,6 +226,23 @@ const DailySale = () => {
                     onChange={(e) => setSelectedDate(e.target.value)}
                 />
             </div>
+            <h2>{selectedDate} </h2>
+
+  <div className='details-container'>
+
+ 
+  <h2 className="">Total Sale Price - ${calculateTotalSalePrice()}</h2>
+    <h2 className="">Total Expenditure - ${totalExpenditure}</h2>
+    <h2 className="">Profit - ${profit}</h2>
+            <h2>   <button className="save-button" onClick={addSales}>Save Sales</button>
+            
+             </h2>
+
+             <h2> {successMessage && (
+             <p className="success" ><FontAwesomeIcon icon={faCheckCircle} className="success-icon" />{successMessage} </p>
+             )}</h2>
+ </div> 
+           
             <div className="expenditure">
                 <h2 className="section-title" style={{ color: 'black' }}> Expenditure</h2>
                 <div className="expenditure-item">
@@ -298,11 +315,7 @@ const DailySale = () => {
 
                
                 <h2 className="section-title" style={{ color: 'black' }}>Daily Sales</h2>
-             <button className="save-button" onClick={addSales}>Save Sales</button>
-             {successMessage && (
-             <p className="success" ><FontAwesomeIcon icon={faCheckCircle} className="success-icon" />{successMessage} </p>
-             )}
-             
+          
              
 
             <table className="data-table">

@@ -178,7 +178,7 @@ function MonthlySalesDetails() {
                     </tbody>
                     <tfoot>
                         <tr className="total-row">
-                            <td>Total:</td>
+                            <td>Total</td>
                             <td>{totalSalePrice}</td>
                             <td>{totalExpenditure}</td>
                             <td>{totalProfit}</td>
