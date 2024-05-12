@@ -145,10 +145,18 @@ const Payment = ({ totalBill, referenceNumber, clientId, phoneNumber }) => {
                     onError={handlePaymentError}
                 />
                 {paymentSuccess && (
+                    // <p className="payment-success" >
+                    //     <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+                    //     Payment Successful!
+                    // </p>
+
                     <p className="payment-success" >
                         <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
                         Payment Successful!
                     </p>
+
+
+
                 )}
                 {paymentError && (
                     <div className="payment-error-container">

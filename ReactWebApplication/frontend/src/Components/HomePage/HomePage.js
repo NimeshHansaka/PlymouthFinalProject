@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className="home-container">
             {/* Navbar */}
-            <nav className="navbar">
+            <nav className="navbar" >
                 {/* Logo and name */}
                 <div className="logo-container">
                     {/* <img src={logo} alt="Logo" className="logo" /> */}
@@ -23,7 +23,9 @@ const Home = () => {
             {/* Main content */}
             <div className="main-content">
                 <h1>Welcome to Automated Self Service Restuarant</h1>
-                <p>Start  app  here!</p>
+                <p  style={{ color: 'black'
+              
+                 } }>Start  app  here!</p>
                 <Link to="/app">
                     <button className="camera-button">Camera</button>
                 </Link>

@@ -31,11 +31,13 @@
     transition: all 0.3s ease; /* Add smooth transition for all properties */
 }
 
-.admin-login-container button {
+.admin-login-container .login-button {
     width: 100%;
     padding: 15px;
-    /* background-color: #000;  */
-    background-color: #333; 
+    background-color:#192eef; 
+   
+
+    /* background-color:#0075f4;  */
    
     color: #fff; /* Set text color to white */
     border: none;
@@ -44,27 +46,33 @@
     transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transitions for background color and transform */
 }
 
-.admin-login-container button:hover {
+.admin-login-container .login-button:hover {
     /* background-color: #333;  */
-    background-color: #000; /* Set background color to black */
+    background-color:#0075f4; /* Set background color to black */
     
     transform: translateY(-2px); /* Add slight upward movement on hover */
 }
 
-.cancel-button {
-    background-color: #ff6347; /* Red color for the button */
-    color: #fff; /* White text color */
-    padding: 10px 20px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style */
-    margin-top: 10px; /* Margin from the top */
-    text-decoration: none; /* Remove default text decoration */
-    display: inline-block; /* Display as inline-block */
+
+
+.admin-login-container .cancel-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px;
+
+    background-color: #000; /* Set background color to black */
+   
+    color: #fff; /* Set text color to white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transitions for background color and transform */
 }
 
-.cancel-button:hover {
-    background-color: #ff473a; /* Darker red color on hover */
+.admin-login-container .cancel-button:hover {
+    /* background-color: #333;  */
+   
+    background-color: #4d4e4f; 
+    transform: translateY(-2px); /* Add slight upward movement on hover */
 }
-
 /* Additional styles for other elements if needed */

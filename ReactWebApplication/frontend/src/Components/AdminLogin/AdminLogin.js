@@ -38,7 +38,7 @@ const AdminLogin = () => {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
             />
-            <button onClick={handleLogin}>Login</button>
+            <button className="login-button" onClick={handleLogin}>Login</button>
             {/* Cancel button */}
             <Link to="/">
                 <button className="cancel-button" onClick={handleCancel}>Cancel</button>

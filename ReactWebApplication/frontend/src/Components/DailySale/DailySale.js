@@ -48,7 +48,7 @@ const DailySale = () => {
 
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
+    const [expenditureSuccessMessage, setExpenditureSuccessMessage] = useState('');
 
 
     const calculateTotalSalePrice = useCallback(() => {
@@ -147,8 +147,13 @@ const DailySale = () => {
             });
             fetchExpenditures(selectedDate);
             setNewExpenditure({ description: '', amount: '' });
+            setExpenditureSuccessMessage('Expenditure added successfully.');
+            setTimeout(() => setExpenditureSuccessMessage(''), 3000); // Clear success message after 3 seconds
+            setErrorMessage('');
         } catch (error) {
             console.error('Error adding expenditure:', error);
+            setErrorMessage('Error adding expenditure.');
+            setTimeout(() => setErrorMessage(''), 3000); // Clear error message after 3 seconds
         }
     };
 
@@ -212,8 +217,8 @@ const DailySale = () => {
     return (
         <div className="full-page">
             <Navbar />
-            <div className="date-picker">
-                <label htmlFor="date">Select Date:</label>
+            <div className="date-picker" style={{ color: 'black' }}>
+                <label htmlFor="date" style={{ color: 'black' }} >Select Date:</label>
                 <input
                     type="date"
                     id="date"
@@ -222,7 +227,7 @@ const DailySale = () => {
                 />
             </div>
             <div className="expenditure">
-                <h2 className="section-title">Expenditure</h2>
+                <h2 className="section-title" style={{ color: 'black' }}> Expenditure</h2>
                 <div className="expenditure-item">
                     <input
                         type="text"
@@ -239,7 +244,24 @@ const DailySale = () => {
                     <button className="blue-button" onClick={addExpenditure}>
                         Add
                     </button>
+
+                    {expenditureSuccessMessage && (
+    <p className="success">
+        <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+        {expenditureSuccessMessage}
+    </p>
+)}
                 </div>
+
+
+                {errorMessage && (
+                <div className="error-message">
+                    <FontAwesomeIcon icon={faTimesCircle} className="error-icon" />
+                    <p   >{errorMessage}</p>
+                </div>
+            )}
+
+
                 <table className="data-table">
                     <thead>
                         <tr>
@@ -264,15 +286,26 @@ const DailySale = () => {
                             </tr>
                         ))}
                         <tr className="total-expenditure-row">
-                            <td colSpan="2">Total Expenditure:</td>
+                            <td colSpan="2" >Total Expenditure:</td>
                             <td>${totalExpenditure}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+
             <div className="daily-sales">
-                <h2 className="section-title">Daily Sales</h2>
-                <table className="data-table">
+
+               
+                <h2 className="section-title" style={{ color: 'black' }}>Daily Sales</h2>
+             <button className="save-button" onClick={addSales}>Save Sales</button>
+             {successMessage && (
+             <p className="success" ><FontAwesomeIcon icon={faCheckCircle} className="success-icon" />{successMessage} </p>
+             )}
+             
+             
+
+            <table className="data-table">
                     <thead>
                         <tr>
                             <th>Food Item</th>
@@ -302,20 +335,13 @@ const DailySale = () => {
                         </tr>
                     </tbody>
                 </table>
-                <button className="save-button save-sales-button" onClick={addSales}>Save Sales</button>
+
+
+
+
            
-                {successMessage && (
-                <div className="success-message">
-                    <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
-                    <p>{successMessage}</p>
-                </div>
-            )}
-            {errorMessage && (
-                <div className="error-message">
-                    <FontAwesomeIcon icon={faTimesCircle} className="error-icon" />
-                    <p>{errorMessage}</p>
-                </div>
-            )}
+                
+          
             </div>
         </div>
     );
