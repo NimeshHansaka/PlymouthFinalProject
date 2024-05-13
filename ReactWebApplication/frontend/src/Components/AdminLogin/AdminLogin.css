@@ -2,6 +2,7 @@
     width: 400px;
     margin: 0 auto; /* Center the container horizontally */
     margin-top: 20vh; /* Adjust top margin for vertical centering */
+   margin-bottom: 18vh;
     padding: 30px;
     border: 2px solid #000; /* Set border color to black */
     border-radius: 10px;

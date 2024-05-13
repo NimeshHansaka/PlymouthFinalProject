@@ -33,16 +33,36 @@ function About() {
     <div>
       <Navbar />
       <div className="about-container">
-        <h1>Hi Admin</h1>
+        <h1>Dear Sir/Madom ,</h1>
+
+       <p>
+       You Can check Order and Payment Details in Orders
+       ,View daily sales reports in Daily Sales
+       ,View monthly sale reports in Monthly Sales  and
+       Manage food items in Food items
+
+       </p>
+
+
+
+{/*        
         <ul>
           <li>You Can check Order and Payment Details in Orders ,</li>
           <li>View daily sales reports in Daily Sales ,</li>
           <li>View monthly sale reports in Monthly Sales  and</li>
           <li>Manage food items in Food items</li>
-          {/* Add more features here */}
-        </ul>
-        <h2>Please Add Food Items Price</h2>
-        <p>These Are the Trained Food Items. Please use these names for add food item prices.</p>
+         
+        </ul> */}
+
+
+        <h2>Please Add Food Items Prices  <a href='/admin/fooditems'>Food Items</a></h2>
+       
+        <p>These Are the Trained Food Items. Please use these names for add food items prices.</p>
+    
+
+        <p>Ex:-</p>
+        <p>Name - Egg</p>
+        <p>Price - 100</p>
        
 
         <h2>Food Items</h2>
@@ -57,9 +77,6 @@ function About() {
         </ul>
        
        
-        <p>Ex:-</p>
-        <p>Food item Name - Egg</p>
-        <p>Price - 100</p>
        
       </div>
     </div>
